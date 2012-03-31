@@ -18,8 +18,18 @@ namespace WebsiteKeepAlive
 				return 1;
 			}
 
-			var request = (HttpWebRequest) WebRequest.Create(args[0]);
-			
+			HttpWebRequest request;
+
+			try
+			{
+				request = (HttpWebRequest) WebRequest.Create(args[0]);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+				return 4;
+			}
+
 			request.AllowAutoRedirect = true;
 
 			if(args.Length > 1)
